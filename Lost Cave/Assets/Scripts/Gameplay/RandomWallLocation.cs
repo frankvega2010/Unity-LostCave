@@ -9,25 +9,27 @@ public class RandomWallLocation : MonoBehaviour
     public List<Vector2> usedPositions;
 
     private bool isRepeated;
+
     // Start is called before the first frame update
     private void Start()
     {
+        if(maxWalls > 120)
+        {
+            maxWalls = 120;
+        }
+
         usedPositions.Add(new Vector2(0, 0));
 
         for (int i = 0; i < maxWalls; i++)
         {
             isRepeated = false;
-            int randomLocationIndexX = Random.Range(-20, 21);
-            int randomLocationIndexZ = Random.Range(-2, 11);
+            int randomLocationIndexX = Random.Range(-19, 20);
+            int randomLocationIndexZ = Random.Range(-1, 10);
 
-            while (randomLocationIndexX % 2 == 0 || randomLocationIndexX == 0)
+            while (randomLocationIndexX % 2 == 0 && randomLocationIndexZ % 2 == 0)
             {
-                randomLocationIndexX = Random.Range(-20, 21);
-            }
-
-            while (randomLocationIndexZ % 2 == 0 || randomLocationIndexZ == 0)
-            {
-                randomLocationIndexZ = Random.Range(-2, 11);
+                randomLocationIndexX = Random.Range(-19, 20);
+                randomLocationIndexZ = Random.Range(-1, 10);
             }
 
             for (int c = 0; c < usedPositions.Count; c++)
@@ -39,7 +41,6 @@ public class RandomWallLocation : MonoBehaviour
                     isRepeated = true;
                 }
             }
-
 
             if (isRepeated)
             {
