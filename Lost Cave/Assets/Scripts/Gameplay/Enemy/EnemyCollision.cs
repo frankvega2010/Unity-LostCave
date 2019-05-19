@@ -24,6 +24,9 @@ public class EnemyCollision : MonoBehaviour
             case "breakableWall":
                 checkDirection();
                 break;
+            case "Player":
+                collision.gameObject.GetComponent<PlayerStatus>().subtractLives();
+                break;
             default:
                 break;
         }
