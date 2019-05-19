@@ -6,17 +6,18 @@ public class PlayerCollision : MonoBehaviour
 {
     public GameObject player;
 
-    private void OnCollisionEnter(Collision collision)
+    private PlayerStatus playerStatus;
+
+    private void Start()
     {
-        if(collision.gameObject.tag == "wall")
-        {
-            //player.transform.position = new Vector3(Mathf.Round(player.transform.position.x), player.transform.position.y, Mathf.Round(player.transform.position.z));
-        }
-        //Debug.Log("hit");
+        playerStatus = player.GetComponent<PlayerStatus>();
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("not hit");
+        if (other.gameObject.tag == "finalExplosion")
+        {
+            playerStatus.subtractLives();  
+        }
     }
 }
