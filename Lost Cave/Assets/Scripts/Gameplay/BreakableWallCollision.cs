@@ -8,7 +8,6 @@ public class BreakableWallCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "finalExplosion")
         {
-            //Debug.Log("oooof");
             Destroy(gameObject);
         }
     }

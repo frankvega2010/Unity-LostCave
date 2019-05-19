@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RandomWallLocation : MonoBehaviour
 {
+    public GameObject player;
     public GameObject breakableWall;
     public int maxWalls;
     public List<Vector2> usedPositions;
@@ -18,7 +19,19 @@ public class RandomWallLocation : MonoBehaviour
             maxWalls = 120;
         }
 
-        usedPositions.Add(new Vector2(0, 0));
+        usedPositions.Add(new Vector2(player.transform.position.x, player.transform.position.z));
+
+        usedPositions.Add(new Vector2(player.transform.position.x + 5, player.transform.position.z));
+        usedPositions.Add(new Vector2(player.transform.position.x - 5, player.transform.position.z));
+
+        usedPositions.Add(new Vector2(player.transform.position.x, player.transform.position.z + 5));
+        usedPositions.Add(new Vector2(player.transform.position.x, player.transform.position.z - 5));
+
+        usedPositions.Add(new Vector2(player.transform.position.x - 5, player.transform.position.z + 5));
+        usedPositions.Add(new Vector2(player.transform.position.x + 5, player.transform.position.z + 5));
+
+        usedPositions.Add(new Vector2(player.transform.position.x - 5, player.transform.position.z - 5));
+        usedPositions.Add(new Vector2(player.transform.position.x + 5, player.transform.position.z - 5));
 
         for (int i = 0; i < maxWalls; i++)
         {
@@ -40,6 +53,11 @@ public class RandomWallLocation : MonoBehaviour
                 {
                     isRepeated = true;
                 }
+            }
+
+            if(randomLocationIndexX == player.transform.position.x && randomLocationIndexZ == player.transform.position.z)
+            {
+                isRepeated = true;
             }
 
             if (isRepeated)
