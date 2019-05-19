@@ -9,10 +9,13 @@ public class BombExplosion : MonoBehaviour
 
     private float explosionTime;
     private Bomb bomb;
+    private MeshRenderer bombMesh;
 
     private void Start()
     {
         bomb = bombParent.GetComponent<Bomb>();
+        bombMesh = bombParent.GetComponentInChildren<MeshRenderer>();
+        bombMesh.enabled = false;
     }
 
     // Update is called once per frame
