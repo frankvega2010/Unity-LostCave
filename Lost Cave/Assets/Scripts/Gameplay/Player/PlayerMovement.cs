@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject playerModel;
     public int speed;
     public bool canMoveVertical;
     public bool canMoveHorizontal;
@@ -17,10 +18,12 @@ public class PlayerMovement : MonoBehaviour
         if (AxisX > 0)
         {
             transform.position = transform.position + Vector3.forward * speed * Time.deltaTime;
+            playerModel.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
         }
         else if (AxisX < 0)
         {
             transform.position = transform.position + Vector3.forward * -speed * Time.deltaTime;
+            playerModel.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
         }
         else
         {
@@ -29,10 +32,12 @@ public class PlayerMovement : MonoBehaviour
         if (AxisZ > 0)
         {
             transform.position = transform.position + Vector3.right * speed * Time.deltaTime;
+            playerModel.transform.localRotation = Quaternion.Euler(new Vector3(0, 90, 0));
         }
         else if (AxisZ < 0)
         {
             transform.position = transform.position + Vector3.right * -speed * Time.deltaTime;
+            playerModel.transform.localRotation = Quaternion.Euler(new Vector3(0, 270, 0));
         }
         else
         {

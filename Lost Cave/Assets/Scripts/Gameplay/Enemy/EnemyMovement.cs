@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
         maxMoves
     }
 
+    public GameObject enemyModel;
     public int speed;
     public dir enemyDir;
 
@@ -29,15 +30,19 @@ public class EnemyMovement : MonoBehaviour
         {
             case dir.moveUp:
                 transform.position = transform.position + transform.forward * speed * Time.deltaTime;
+                enemyModel.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
                 break;
             case dir.moveDown:
                 transform.position = transform.position + transform.forward * -speed * Time.deltaTime;
+                enemyModel.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
                 break;
             case dir.moveLeft:
                 transform.position = transform.position + transform.right * -speed * Time.deltaTime;
+                enemyModel.transform.localRotation = Quaternion.Euler(new Vector3(0, 270, 0));
                 break;
             case dir.moveRight:
                 transform.position = transform.position + transform.right * speed * Time.deltaTime;
+                enemyModel.transform.localRotation = Quaternion.Euler(new Vector3(0, 90, 0));
                 break;
             default:
                 break;
