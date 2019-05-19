@@ -6419,7 +6419,7 @@ MonoBehaviour:
   breakableWallsList: []
   trapDoor: {fileID: 1565279308}
   breakableWall: {fileID: 8543249888064690453}
-  maxWalls: 1
+  maxWalls: 40
   currentWalls: 0
   usedPositions: []
   reservedPositions: []
