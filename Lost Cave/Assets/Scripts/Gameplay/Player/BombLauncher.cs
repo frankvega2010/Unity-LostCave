@@ -6,26 +6,24 @@ public class BombLauncher : MonoBehaviour
 {
     public GameObject bomb;
 
+    public bool canFire = true;
     // Update is called once per frame
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && canFire)
         {
             GameObject instanciatedBomb = Instantiate(bomb, transform.position, transform.rotation);
+            Bomb bombInstance = instanciatedBomb.GetComponent<Bomb>();
+
             instanciatedBomb.SetActive(true);
+            bombInstance.onBombExploded = EnableFire;
 
-
-            //instanciatedBomb.transform.position = new Vector3(Mathf.Round(instanciatedBomb.transform.position.x), instanciatedBomb.transform.position.y, Mathf.Round(instanciatedBomb.transform.position.z));
-
-            //while(instanciatedBomb.transform.position.x % 2 != 0)
-            //{
-            //    instanciatedBomb.transform.position = new Vector3(instanciatedBomb.transform.position.x + 1, instanciatedBomb.transform.position.y, instanciatedBomb.transform.position.z);
-            //}
-
-            //while (instanciatedBomb.transform.position.z % 2 != 0)
-            //{
-            //    instanciatedBomb.transform.position = new Vector3(instanciatedBomb.transform.position.x, instanciatedBomb.transform.position.y, instanciatedBomb.transform.position.z + 1);
-            //}
+            canFire = false;
         }
+    }
+
+    private void EnableFire()
+    {
+        canFire = true;
     }
 }

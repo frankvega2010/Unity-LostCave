@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+    public delegate void onBombAction();
+    public onBombAction onBombExploded;
+
     public GameObject player;
     public GameObject explosion;
     public float ExplosionTime;
@@ -34,6 +37,10 @@ public class Bomb : MonoBehaviour
 
     public void Destroy()
     {
+        if (onBombExploded != null)
+        {
+            onBombExploded();
+        }   
         Destroy(gameObject);
     }
 }

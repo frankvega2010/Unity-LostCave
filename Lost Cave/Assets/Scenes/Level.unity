@@ -799,6 +799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomb: {fileID: 2025293256}
+  canFire: 1
 --- !u!1 &152529315
 GameObject:
   m_ObjectHideFlags: 0
@@ -11327,7 +11328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombParent: {fileID: 2025293256}
-  explosionDurationTime: 2
+  explosionDurationTime: 0.5
 --- !u!1 &1882549417
 GameObject:
   m_ObjectHideFlags: 0
