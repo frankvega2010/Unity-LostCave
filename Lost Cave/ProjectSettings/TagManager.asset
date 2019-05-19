@@ -7,6 +7,7 @@ TagManager:
   - wall
   - explosion
   - finalExplosion
+  - breakableWall
   layers:
   - Default
   - TransparentFX
