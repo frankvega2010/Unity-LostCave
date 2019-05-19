@@ -4405,7 +4405,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770642672}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 36.8, y: 1.6799526, z: 15}
+  m_LocalPosition: {x: 62.8, y: 1.6799526, z: -5}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 198809894}
@@ -13022,7 +13022,7 @@ GameObject:
   - component: {fileID: 2025293261}
   m_Layer: 0
   m_Name: Bomb01
-  m_TagString: Untagged
+  m_TagString: bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

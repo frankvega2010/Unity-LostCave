@@ -17,9 +17,6 @@ public class EnemyCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "finalExplosion")
         {
-            Debug.Log("rip");
-            // Add points
-            // KillEnemy enemyStatus.killEnemy(); // Add delegate onKilledEnemy and apply points in GameManager.
             enemyStatus.killEnemy();
         }
     }
@@ -33,6 +30,12 @@ public class EnemyCollision : MonoBehaviour
                 checkDirection();
                 break;
             case "breakableWall":
+                checkDirection();
+                break;
+            case "bomb":
+                checkDirection();
+                break;
+            case "enemy":
                 checkDirection();
                 break;
             default:

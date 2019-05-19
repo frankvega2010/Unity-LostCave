@@ -9,6 +9,7 @@ TagManager:
   - finalExplosion
   - breakableWall
   - enemy
+  - bomb
   layers:
   - Default
   - TransparentFX
