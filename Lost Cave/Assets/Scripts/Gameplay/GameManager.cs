@@ -6,12 +6,15 @@ public class GameManager : MonoBehaviour
 {
     public GameObject player;
     public List<GameObject> enemies;
+    public GameObject wallGenerator;
 
+    private int wallsLeft = 0;
     private Vector3 playerSpawnLocation;
     private PlayerStatus playerStatus;
     private PlayerCollision playerCollision;
     private List<EnemyStatus> enemiesStatus = new List<EnemyStatus>();
     private int lastPlayerLives;
+    private RandomWallLocation randomWallLocation;
 
     // Start is called before the first frame update
     private void Start()
@@ -21,6 +24,9 @@ public class GameManager : MonoBehaviour
         
         lastPlayerLives = playerStatus.getLives();
         playerSpawnLocation = player.transform.position;
+
+        randomWallLocation = wallGenerator.GetComponent<RandomWallLocation>();
+        wallsLeft = randomWallLocation.getWallsAmount();
 
         foreach (GameObject enemy in enemies)
         {
@@ -59,5 +65,10 @@ public class GameManager : MonoBehaviour
     private void addPointsEnemyKilled()
     {
         playerStatus.addPoints(100);
+    }
+
+    public void addPointsWallDestroyed()
+    {
+        playerStatus.addPoints(10);
     }
 }

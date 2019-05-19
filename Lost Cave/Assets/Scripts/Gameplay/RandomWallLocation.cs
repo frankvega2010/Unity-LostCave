@@ -6,9 +6,11 @@ public class RandomWallLocation : MonoBehaviour
 {
     public GameObject player;
     public List<GameObject> enemies;
+    public List<GameObject> breakableWallsList;
     public GameObject trapDoor;
     public GameObject breakableWall;
     public int maxWalls;
+    public int currentWalls = 0;
     public List<Vector2> usedPositions;
     public List<Vector2> reservedPositions;
     public Vector2 trapDoorLocation;
@@ -104,6 +106,11 @@ public class RandomWallLocation : MonoBehaviour
            
         }
 
+        foreach (GameObject wall in breakableWallsList)
+        {
+            currentWalls++;
+        }
+
         trapDoor.transform.position = new Vector3(trapDoorLocation.x, trapDoor.transform.position.y, trapDoorLocation.y);
     }
 
@@ -122,5 +129,10 @@ public class RandomWallLocation : MonoBehaviour
 
         reservedPositions.Add(new Vector2(go.transform.position.x - 5, go.transform.position.z - 5));
         reservedPositions.Add(new Vector2(go.transform.position.x + 5, go.transform.position.z - 5));
+    }
+
+    public int getWallsAmount()
+    {
+        return currentWalls;
     }
 }

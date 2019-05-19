@@ -5674,9 +5674,11 @@ MonoBehaviour:
   - {fileID: 757721302}
   - {fileID: 1502809876}
   - {fileID: 364936673}
+  breakableWallsList: []
   trapDoor: {fileID: 1565279308}
   breakableWall: {fileID: 8543249888064690453}
   maxWalls: 64
+  currentWalls: 0
   usedPositions: []
   reservedPositions: []
   trapDoorLocation: {x: 0, y: 0}
@@ -10152,7 +10154,7 @@ BoxCollider:
   m_GameObject: {fileID: 1565279308}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -11594,6 +11596,7 @@ MonoBehaviour:
   - {fileID: 757721302}
   - {fileID: 1502809876}
   - {fileID: 364936673}
+  wallGenerator: {fileID: 917440365}
 --- !u!1 &1750453524
 GameObject:
   m_ObjectHideFlags: 0
@@ -14920,6 +14923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20c8e678ee7185478a1471810d5f5a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameManagerGameObject: {fileID: 1738857287}
 --- !u!4 &8543249888064690457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 256872082716179399, guid: 8d214180364a7ce438016a89d90e175f,
