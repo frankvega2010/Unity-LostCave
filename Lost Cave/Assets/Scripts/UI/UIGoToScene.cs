@@ -9,7 +9,16 @@ public class UIGoToScene : MonoBehaviour
 
     public void GoToThisScene()
     {
-        SceneManager.LoadScene(sceneName);
+        if(sceneName == "Level")
+        {
+            LoaderManager.Get().LoadScene(sceneName);
+            UILoadingScreen.Get().SetVisible(true);
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+        
     }
 
     public void QuitGame()

@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     private RandomWallLocation randomWallLocation;
     private List<EnemyStatus> enemiesStatus = new List<EnemyStatus>();
     private UIFinishPanel finishPanel;
+    private Highscore highscore;
 
     private MeshRenderer trapDoorRenderer;
     private BoxCollider trapDoorCollider;
@@ -33,6 +34,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        highscore = Highscore.Get();
+
         trapDoorRenderer = trapDoorModel.GetComponent<MeshRenderer>();
         trapDoorCollider = trapDoorModel.GetComponentInParent<BoxCollider>();
 
@@ -135,7 +138,8 @@ public class GameManager : MonoBehaviour
 
         if(changingSceneTimer >= ChangeSceneTime)
         {
-            SceneManager.LoadScene("Level");
+            highscore.save(playerStatus.getPoints());
+            SceneManager.LoadScene("GameOver");
         }
     }
 
@@ -147,7 +151,7 @@ public class GameManager : MonoBehaviour
 
         if (changingSceneTimer >= ChangeSceneTime)
         {
-            SceneManager.LoadScene("Level");
+            SceneManager.LoadScene("GameOver");
         }
     }
 }
