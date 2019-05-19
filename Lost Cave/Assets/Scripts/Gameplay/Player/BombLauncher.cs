@@ -15,7 +15,7 @@ public class BombLauncher : MonoBehaviour
             instanciatedBomb.SetActive(true);
 
 
-            instanciatedBomb.transform.position = new Vector3(Mathf.Round(instanciatedBomb.transform.position.x), instanciatedBomb.transform.position.y, Mathf.Round(instanciatedBomb.transform.position.z));
+            //instanciatedBomb.transform.position = new Vector3(Mathf.Round(instanciatedBomb.transform.position.x), instanciatedBomb.transform.position.y, Mathf.Round(instanciatedBomb.transform.position.z));
 
             //while(instanciatedBomb.transform.position.x % 2 != 0)
             //{
