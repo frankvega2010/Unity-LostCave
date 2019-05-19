@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class EnemyStatus : MonoBehaviour
 {
-    public delegate void onEnemyAction();
+    public delegate void onEnemyAction(EnemyStatus enemy);
     public onEnemyAction onEnemyKilled;
 
     public void killEnemy()
     {
         if (onEnemyKilled != null)
         {
-            onEnemyKilled();
+            onEnemyKilled(this);
         }
-        Destroy(gameObject);
+       // Destroy(gameObject);
     }
 }

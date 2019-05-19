@@ -17,6 +17,7 @@ public class BreakableWallCollision : MonoBehaviour
         if (other.gameObject.tag == "finalExplosion")
         {
             gameManager.addPointsWallDestroyed();
+            gameManager.substractWallsLeft();
             Destroy(gameObject);
         }
     }

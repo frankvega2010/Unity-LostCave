@@ -10,6 +10,7 @@ TagManager:
   - breakableWall
   - enemy
   - bomb
+  - exit
   layers:
   - Default
   - TransparentFX

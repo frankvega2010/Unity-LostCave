@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    public delegate void onPlayerAction();
+    public onPlayerAction onPlayerExit;
     public GameObject player;
 
     private bool switchOnce;
@@ -27,6 +29,12 @@ public class PlayerCollision : MonoBehaviour
         {
             case "enemy":
                 receivedDamage();
+                break;
+            case "exit":
+                if(onPlayerExit != null)
+                {
+                    onPlayerExit();
+                }
                 break;
             default:
                 break;

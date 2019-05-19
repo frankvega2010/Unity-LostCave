@@ -18,7 +18,7 @@ public class RandomWallLocation : MonoBehaviour
     private bool isRepeated;
 
     // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
         if(maxWalls > 120)
         {
@@ -95,6 +95,7 @@ public class RandomWallLocation : MonoBehaviour
                 if(!isRepeated)
                 {
                     usedPositions.Add(new Vector2(randomLocationIndexX, randomLocationIndexZ));
+                    breakableWallsList.Add(instanciatedWall);
 
                     if (i == maxWalls - 1)
                     {
