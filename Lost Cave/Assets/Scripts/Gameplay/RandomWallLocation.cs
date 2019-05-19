@@ -5,6 +5,7 @@ using UnityEngine;
 public class RandomWallLocation : MonoBehaviour
 {
     public GameObject player;
+    public List<GameObject> enemies;
     public GameObject trapDoor;
     public GameObject breakableWall;
     public int maxWalls;
@@ -22,22 +23,12 @@ public class RandomWallLocation : MonoBehaviour
             maxWalls = 120;
         }
         usedPositions.Add(new Vector2(0, 0));
-        reservedPositions.Add(new Vector2(player.transform.position.x, player.transform.position.z));
-
-        reservedPositions.Add(new Vector2(player.transform.position.x + 5, player.transform.position.z));
-        reservedPositions.Add(new Vector2(player.transform.position.x - 5, player.transform.position.z));
-
-        reservedPositions.Add(new Vector2(player.transform.position.x, player.transform.position.z + 5));
-        reservedPositions.Add(new Vector2(player.transform.position.x, player.transform.position.z - 5));
-
-        reservedPositions.Add(new Vector2(player.transform.position.x - 5, player.transform.position.z + 5));
-        reservedPositions.Add(new Vector2(player.transform.position.x + 5, player.transform.position.z + 5));
-
-        reservedPositions.Add(new Vector2(player.transform.position.x - 5, player.transform.position.z - 5));
-        reservedPositions.Add(new Vector2(player.transform.position.x + 5, player.transform.position.z - 5));
                     
         for (int i = 0; i < maxWalls; i++)
         {
+            reservedPositions.Clear();
+            reservePositions(player);
+
             isRepeated = false;
             int randomLocationIndexX = Random.Range(-19, 20);
             int randomLocationIndexZ = Random.Range(-1, 10);
@@ -83,6 +74,22 @@ public class RandomWallLocation : MonoBehaviour
                     }
                 }
 
+                for (int e = 0; e < enemies.Count; e++)
+                {
+                    reservedPositions.Clear();
+                    reservePositions(enemies[e]);
+
+                    for (int a = 0; a < reservedPositions.Count; a++)
+                    {
+                        if (instanciatedWall.transform.position.x == reservedPositions[a].x && instanciatedWall.transform.position.z == reservedPositions[a].y)
+                        {
+                            i--;
+                            Destroy(instanciatedWall);
+                            isRepeated = true;
+                        }
+                    }
+                }
+
                 if(!isRepeated)
                 {
                     usedPositions.Add(new Vector2(randomLocationIndexX, randomLocationIndexZ));
@@ -98,5 +105,22 @@ public class RandomWallLocation : MonoBehaviour
         }
 
         trapDoor.transform.position = new Vector3(trapDoorLocation.x, trapDoor.transform.position.y, trapDoorLocation.y);
+    }
+
+    private void reservePositions(GameObject go)
+    {
+        reservedPositions.Add(new Vector2(go.transform.position.x, go.transform.position.z));
+
+        reservedPositions.Add(new Vector2(go.transform.position.x + 5, go.transform.position.z));
+        reservedPositions.Add(new Vector2(go.transform.position.x - 5, go.transform.position.z));
+
+        reservedPositions.Add(new Vector2(go.transform.position.x, go.transform.position.z + 5));
+        reservedPositions.Add(new Vector2(go.transform.position.x, go.transform.position.z - 5));
+
+        reservedPositions.Add(new Vector2(go.transform.position.x - 5, go.transform.position.z + 5));
+        reservedPositions.Add(new Vector2(go.transform.position.x + 5, go.transform.position.z + 5));
+
+        reservedPositions.Add(new Vector2(go.transform.position.x - 5, go.transform.position.z - 5));
+        reservedPositions.Add(new Vector2(go.transform.position.x + 5, go.transform.position.z - 5));
     }
 }
