@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private int wallsLeft = 0;
     private int lastPlayerLives;
     private float changingSceneTimer;
+    private float matchTimer;
     private Vector3 playerSpawnLocation;
 
     private bool canLose = false;
@@ -67,7 +68,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(lastPlayerLives != playerStatus.getLives())
+        matchTimer += Time.deltaTime;
+
+        if (lastPlayerLives != playerStatus.getLives())
         {
             lastPlayerLives = playerStatus.getLives();
             if (lastPlayerLives <= 0)
@@ -123,6 +126,16 @@ public class GameManager : MonoBehaviour
     public void substractWallsLeft()
     {
         wallsLeft--;
+    }
+
+    public int getEnemiesCount()
+    {
+        return enemies.Count;
+    }
+
+    public int getMatchTime()
+    {
+        return (int)matchTimer;
     }
 
     private void switchToWin()
