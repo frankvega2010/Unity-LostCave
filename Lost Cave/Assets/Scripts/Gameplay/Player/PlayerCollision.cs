@@ -6,8 +6,8 @@ public class PlayerCollision : MonoBehaviour
 {
     public GameObject player;
 
+    private bool switchOnce;
     private PlayerStatus playerStatus;
-
     private void Start()
     {
         playerStatus = player.GetComponent<PlayerStatus>();
@@ -17,7 +17,38 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "finalExplosion")
         {
-            playerStatus.subtractLives();  
+            receivedDamage();
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "enemy":
+                receivedDamage();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void receivedDamage()
+    {
+        if (!switchOnce)
+        {
+            playerStatus.subtractLives();
+            switchOnce = true;
+        }
+    }
+
+    public void switchToFalse()
+    {
+        switchOnce = false;
+    }
+
+    public void switchToTrue()
+    {
+        switchOnce = true;
     }
 }
