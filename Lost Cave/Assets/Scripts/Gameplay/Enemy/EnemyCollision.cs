@@ -6,15 +6,26 @@ public class EnemyCollision : MonoBehaviour
 {
 
     private EnemyMovement enemyMovement;
-    //private EnemyMovement.dir currentDir;
+    private EnemyStatus enemyStatus;
     private void Start()
     {
         enemyMovement = GetComponent<EnemyMovement>();
+        enemyStatus = GetComponent<EnemyStatus>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "finalExplosion")
+        {
+            Debug.Log("rip");
+            // Add points
+            // KillEnemy enemyStatus.killEnemy(); // Add delegate onKilledEnemy and apply points in GameManager.
+            enemyStatus.killEnemy();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        //currentDir = enemyMovement.enemyDir;
 
         switch (collision.gameObject.tag)
         {
@@ -24,9 +35,6 @@ public class EnemyCollision : MonoBehaviour
             case "breakableWall":
                 checkDirection();
                 break;
-            //case "Player":
-            //    collision.gameObject.GetComponent<PlayerStatus>().subtractLives();
-            //    break;
             default:
                 break;
         }
